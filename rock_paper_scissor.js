@@ -75,7 +75,7 @@ function playGame(playerMove) {
     localStorage.setItem('score', JSON.stringify(score));
     
     document.querySelector('.choice').innerHTML = 
-    `You <img src="img/${playerMove}-emoji.png" alt=""> - <img src="img/${computer}-emoji.png" alt="">Compputer`;
+    `You <img src="../img/${playerMove}-emoji.png" alt=""> - <img src="../img/${computer}-emoji.png" alt="">Compputer`;
     document.querySelector('.result').innerHTML = result
     document.querySelector('.final').innerHTML = `wins: ${score.wins} lose: ${score.loses} tie:${score.ties}`
 }
