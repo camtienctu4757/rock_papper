@@ -1,12 +1,13 @@
 html{
     background-color: #000;
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
 }
 
 .wraper{
-    margin: 20px 100px;
+    /* margin: 20px 100px !important; */
+    background-color: #000 !important;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
 }
 .header h1{
     text-align: center;
