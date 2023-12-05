@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom-name</title>
+</head>
+
+<body>
+    <input type="text" onkeydown="
+       handalEnter(event)
+        ">
+    <button onclick="result()">Submit</button>
+    <p></p>
+    <script>
+
+        function handalEnter(event) {
+            if (event.key === 'Enter') {
+                result()
+            }
+        }
+        const name = document.querySelector('input');
+        const writeName = document.querySelector('p');
+        console.log(name.value)
+
+        function result() {
+            writeName.innerHTML = 'Your name : ' + name.value;
+        }
+
+    </script>
+</body>
+
+</html>
