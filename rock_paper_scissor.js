@@ -1,6 +1,16 @@
 let computer;
 function computerMove() {
-    return Math.random();
+    const number = Math.random();
+    if (number < 1 / 3) {
+        return 'rock'
+    }
+    else if (number > 1 / 3 && number < 2 / 3) {
+        return 'paper'
+    }
+    else {
+        return 'scissor'
+    }
+
 }
 
 function playGame(playerMove) {
@@ -11,54 +21,45 @@ function playGame(playerMove) {
         loses: 0,
         ties: 0
     }
-
-    score = JSON.parse(localStorage.getItem('score')) || 
+    score = JSON.parse(localStorage.getItem('score')) ||
     {
         wins: 0,
         loses: 0,
-        ties: 0}
+        ties: 0
+    }
 
     if (playerMove === 'rock') {
-        if (computer < 1 / 3) {
+        if (computer === 'rock') {
             result = 'tie.'
-            computer = 'rock'
         }
-        else if (computer >= 1 / 3 && computer <= 2 / 3) {
+        else if (computer === 'paper') {
             result = 'You lose.'
-            computer = 'paper'
         }
         else {
             result = 'You win.'
-            computer = 'scissor'
         }
 
     }
     else if (playerMove === 'paper') {
-        if (computer < 1 / 3) {
+        if (computer === 'rock') {
             result = 'You win.'
-            computer = 'rock'
         }
-        else if (computer >= 1 / 3 && computer <= 2 / 3) {
+        else if (computer === 'paper') {
             result = 'tie.'
-            computer = 'paper'
         }
         else {
             result = 'You lose.'
-            computer = 'scissor'
         }
     }
     else if (playerMove === 'scissor') {
-        if (computer < 1 / 3) {
+        if (computer === 'rock') {
             result = 'You lose.'
-            computer = 'rock'
         }
-        else if (computer >= 1 / 3 && computer <= 2 / 3) {
+        else if (computer === 'paper') {
             result = 'You win.'
-            computer = 'paper'
         }
         else {
             result = 'tie.'
-            computer = 'scissor'
         }
     }
 
@@ -73,9 +74,9 @@ function playGame(playerMove) {
     }
 
     localStorage.setItem('score', JSON.stringify(score));
-    
-    document.querySelector('.choice').innerHTML = 
-    `You <img src="https://camtienctu4757.github.io/rock_papper/img/${playerMove}-emoji.png" alt=""> - <img src="./img/${computer}-emoji.png" alt="">Compputer`;
+
+    document.querySelector('.choice').innerHTML =
+        `You <img src="https://camtienctu4757.github.io/rock_papper/img/${playerMove}-emoji.png" alt=""> - <img src="./img/${computer}-emoji.png" alt="">Compputer`;
     document.querySelector('.result').innerHTML = result
     document.querySelector('.final').innerHTML = `wins: ${score.wins} lose: ${score.loses} tie:${score.ties}`
 }
@@ -90,5 +91,25 @@ function reset() {
     document.querySelector('.final').innerHTML = 'wins: 0 lose: 0 tie:0'
     document.querySelector('.choice').innerHTML = ''
     document.querySelector('.result').innerHTML = ''
+
+}
+
+let isAuto = false
+let idInterval;
+const stop = document.querySelector('.auto-btn')
+function autoPlay() {
+    if (!isAuto) {
+            idInterval = setInterval(function () {
+            const playerMove = computerMove()
+            playGame(playerMove)
+        }, 1000)
+        stop.innerHTML = 'Stop'
+        isAuto = true
+    }
+    else{
+        clearInterval(idInterval)
+        isAuto = false
+        stop.innerHTML ='Auto play'
+    }
 
 }
