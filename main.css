@@ -43,8 +43,8 @@ html{
     cursor: pointer;
 
 }
-.main .reset-btn:hover,
-.main .auto-btn:hover{
+.reset-btn:hover,
+.auto-btn:hover{
     background-color: rgb(180, 178, 178);
     color: #fff;
 }
