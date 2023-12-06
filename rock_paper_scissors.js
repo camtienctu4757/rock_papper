@@ -8,10 +8,20 @@ function computerMove() {
         return 'paper'
     }
     else {
-        return 'scissor'
+        return 'scissors'
     }
 
 }
+
+document.querySelector('.js-btn-rock').addEventListener('click',()=>{
+    playGame('rock')
+})
+document.querySelector('.js-btn-paper').addEventListener('click',()=>{
+    playGame('paper')
+})
+document.querySelector('.js-btn-scissors').addEventListener('click',()=>{
+    playGame('scissors')
+})
 
 function playGame(playerMove) {
     computer = computerMove();
@@ -51,7 +61,7 @@ function playGame(playerMove) {
             result = 'You lose.'
         }
     }
-    else if (playerMove === 'scissor') {
+    else if (playerMove === 'scissors') {
         if (computer === 'rock') {
             result = 'You lose.'
         }
@@ -76,10 +86,11 @@ function playGame(playerMove) {
     localStorage.setItem('score', JSON.stringify(score));
 
     document.querySelector('.choice').innerHTML =
-        `You <img src="https://camtienctu4757.github.io/rock_papper/img/${playerMove}-emoji.png" alt=""> - <img src="./img/${computer}-emoji.png" alt="">Compputer`;
+        `You <img src="./img/${playerMove}-emoji.png" alt=""> - <img src="./img/${computer}-emoji.png" alt="">Compputer`;
     document.querySelector('.result').innerHTML = result
     document.querySelector('.final').innerHTML = `wins: ${score.wins} lose: ${score.loses} tie:${score.ties}`
 }
+
 
 function reset() {
     score = {
@@ -88,12 +99,19 @@ function reset() {
         ties: 0
     }
     localStorage.removeItem('score')
-    document.querySelector('.final').innerHTML = 'wins: 0 lose: 0 tie:0'
+    document.querySelector('.final').innerHTML = 'wins: 0  lose: 0  tie:0'
     document.querySelector('.choice').innerHTML = ''
     document.querySelector('.result').innerHTML = ''
 
 }
 
+document.querySelector('.js-btn-reset').addEventListener('click', ()=>{
+    reset()
+})
+
+document.querySelector('.js-btn-auto').addEventListener('click', ()=>{
+    autoPlay()
+})
 let isAuto = false
 let idInterval;
 const stop = document.querySelector('.auto-btn')

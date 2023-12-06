@@ -18,14 +18,14 @@
         </div>
         <div class="main">
             <div class="list-btn">
-                <button onclick="playGame('rock')" class="btn-move">
+                <button class="btn-move js-btn-rock">
                     <img class="move_icon" src="./img/rock-emoji.png" alt="" srcset="">
                 </button>
-                <button onclick="playGame('paper')" class="btn-move">
+                <button class="btn-move js-btn-paper">
                     <img class="move_icon" src="./img/paper-emoji.png" alt="">
                 </button>
-                <button onclick="playGame('scissor')" class="btn-move">
-                    <img class="move_icon" src="./img/scissor-emoji.png" alt="">
+                <button class="btn-move js-btn-scissors">
+                    <img class="move_icon" src="./img/scissors-emoji.png" alt="">
                 </button>
             </div>
             <div class="infor">
@@ -35,10 +35,9 @@
                 <p class="result"></p>
                 <p class="final">wins: 0 lose: 0 tie:0</p>
             </div>
-
-            <button onclick="reset()" class="reset-btn">Reset</button>
-            <button onclick="autoPlay()" class="auto-btn">Auto play</button>
-            <script src="./rock_paper_scissor.js"></script>
+            <button class="reset-btn js-btn-reset">Reset</button>
+            <button class="auto-btn js-btn-auto">Auto play</button>
+            <script src="./rock_paper_scissors.js"></script>
         </div>
     </div>
 
